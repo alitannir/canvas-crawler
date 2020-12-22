@@ -17,12 +17,39 @@ let ctx = game.getContext('2d')
 
 game.setAttribute('height', getComputedStyle(game)['height'])
 game.setAttribute('width', getComputedStyle(game)['width'])
-// draw a filled box
-// determines the fill color
-ctx.fillStyle = 'white'
-ctx.fillRect(10, 10, 100, 100)
-// draw a line box
-// establishing line looks
-ctx.strokeStyle = 'red'
-ctx.lineWidth = 10;
-ctx.strokeRect(10, 10, 100, 100)
+
+// Ogre
+let ogre = {
+    x: 400,
+    y: 150,
+    color:'#bada55',
+    width: 60,
+    height: 120,
+    alive: true,
+    render: function() {
+        ctx.fillStyle =  this.color
+    ctx.fillRect(this.x, this.y, this.width, this.height)
+    }
+}
+
+
+
+
+
+// let drawBox = (x, y, size, color) => {
+//     ctx.fillStyle = color
+//     ctx.fillRect(x, y, size, size)
+// }
+
+game.addEventListener('click', (e)=> {
+  // clear board
+  ctx.clearRect(0, 0, game.width, game.height)
+// change ogre position
+
+    ogre.x = e.offsetX
+    ogre.y = e.offsetY    
+    ogre.render()
+
+// draw ya boi
+  
+},{ option: true })
